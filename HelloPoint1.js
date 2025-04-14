@@ -1,0 +1,25 @@
+const vertexShaderCode = `
+  void main() {
+    gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
+    gl_PointSize = 10.0;
+  }
+`;
+
+const fragmentShaderCode = `
+  void main() {
+    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+  }
+`;
+
+function main() {
+  const canvas = document.getElementById('webgl160');
+  const gl = getWebGLContext(canvas);
+  if (!gl) return;
+
+  const shadersLinked = initShaders(gl, vertexShaderCode, fragmentShaderCode);
+  if (!shadersLinked) return;
+
+  gl.clearColor(0.0, 0.0, 0.0, 1.0);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+  gl.drawArrays(gl.POINTS, 0, 1);
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      font-family: Arial, sans-serif;
+    }
+    canvas {
+      border: 1px solid black;
+    }
+    .controls {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 14px;
+    }
+    button {
+      padding: 6px 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body onload="main()">
+  <canvas id="webgl" width="400" height="400">
+    Your browser does not support Canvas.
+  </canvas>
+
+
+<div class="controls">
+  <label>R: <input type="range" id="rSlider" min="0" max="255" value="255"></label>
+  <label>G: <input type="range" id="gSlider" min="0" max="255" value="0"></label>
+  <label>B: <input type="range" id="bSlider" min="0" max="255" value="0"></label>
+  <label>A: <input type="range" id="aSlider" min="0" max="1" step="0.01" value="1"></label>
+  <label>Size: <input type="range" id="sizeSlider" min="1" max="20" value="10"></label>
+  <label>Segments: <input type="range" id="segmentsSlider" min="3" max="100" value="32"></label>
+  <button onclick="clear_screen()">Clear</button>
+  <button onclick="choose_tool('point')">Point</button>
+  <button onclick="choose_tool('triangle')">Triangle</button>
+  <button onclick="choose_tool('circle')">Circle</button>
+  <button onclick="show_picture()">Show Picture</button>
+</div>
+
+
+  <script src="./lib/webgl-utils.js"></script>
+  <script src="./lib/webgl-debug.js"></script>
+  <script src="./lib/cuon-utils.js"></script>
+  <script src="Triangle.js"></script>
+  <script src="Circle.js"></script>
+  <script src="ColoredPoints.js"></script>
+</body>
+</html>
